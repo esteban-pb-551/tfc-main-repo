@@ -44,7 +44,3 @@ Contributions to enhance existing projects or add new ones are welcome! To contr
 3. **Make changes**: Implement your updates or additions and commit them with clear, descriptive messages.
 4. **Push to your fork**: Upload your changes to your forked repository.
 5. **Submit a pull request**: Open a pull request to the main repository for review.
-
-## License
-
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for full details.
