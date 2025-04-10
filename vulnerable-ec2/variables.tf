@@ -22,21 +22,3 @@ variable "aws_region" {
   description = "The AWS region to deploy the application"
   default     = "us-west-2"
 }
-
-variable "AWS_SESSION_TOKEN" {
-  description = "AWS session token"
-  type        = string
-  default     = ""
-}
-
-variable "AWS_ACCESS_KEY_ID" {
-  description = "AWS access key ID"
-  type        = string
-  default     = ""
-}
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  description = "AWS secret access key"
-  type        = string
-  default     = ""
-}

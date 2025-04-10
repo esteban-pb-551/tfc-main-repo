@@ -1,3 +1,21 @@
+## 
+### Update `cloud.tf` file
+
+In the `cloud.tf` file, replace the organization name and workspace name with your own.
+
+``` json
+terraform { 
+  cloud { 
+    
+    organization = "<YOUR_ORG_NAME>" # Replace with your organization name
+
+    workspaces { 
+      name = "<YOUR_WORKSPACE_NAME>" # Replace with your workspace name
+    } 
+  } 
+}
+```
+
 ### AWS Service Catalog AppRegistry.
 
 Run the following command in your terminal to creates a new application named "terraform-app" in AWS Service Catalog AppRegistry.

@@ -8,11 +8,13 @@ The following table lists the Terraform projects included in this repository alo
 
 | Project Folder           | Description |
 |--------------------------|-------------|
+| 00-base-aws              | Base Terraform Example for AWS Service Catalog AppRegistry |
+| aws-microservices        | Example of AWS Microservices with Terraform |
 | aws-config               | Simple example of AWS-Config with Terraform |
 | eks-demo-deployments     | EKS complete example  |
+| github-actions           | Example of GitHub Actions with AWS and Rust |
 | goof-master              | Example of Snyk Infrastructure as code. |
 | rust-example             | Rust and Lambda with Terraform |
-| sns-project              | Simple SNS example
 | vulnerable-ec2           | Example of vulnerability in EC2 instance
 
 ## Usage
