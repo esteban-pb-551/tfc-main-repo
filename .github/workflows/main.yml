@@ -48,4 +48,4 @@ jobs:
       - name: Run yor action
         uses: bridgecrewio/yor-action@main
         with:
-          config_file: ./custom_tags.yaml
+          config_file: ./checkov-workshop/code/build/custom_tags.yaml
