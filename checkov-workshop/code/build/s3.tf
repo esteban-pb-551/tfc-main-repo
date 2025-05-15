@@ -20,8 +20,8 @@ resource "aws_s3_bucket_ownership_controls" "dev_s3" {
 resource "aws_dynamodb_table" "dev_db" {
   name           = "dev_table"
   billing_mode   = "PROVISIONED"
-  read_capacity  = 5
-  write_capacity = 5
+  read_capacity  = 10
+  write_capacity = 10
   hash_key       = "id"
   attribute {
     name = "id"
