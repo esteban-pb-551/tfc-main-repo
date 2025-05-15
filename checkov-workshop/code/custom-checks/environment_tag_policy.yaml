@@ -1,0 +1,14 @@
+metadata:
+  name: "Ensure have an Environment tag"
+  id: "CKV_CUSTOM_001"
+  category: "GENERAL"
+  severity: "MEDIUM"
+
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_ec2_host"
+    - "aws_default"
+  attribute: "tags.Environment"
+  operator: "exists"
+  
