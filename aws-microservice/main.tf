@@ -44,9 +44,16 @@ module "eventbridge" {
   }
 
   tags = {
-    Name      = "${random_pet.this.id}-bus"
-    yor_name  = "eventbridge"
-    yor_trace = "b9e267ab-50ae-418b-849c-65b6a5e9c4cb"
+    Name                 = "${random_pet.this.id}-bus"
+    yor_name             = "eventbridge"
+    yor_trace            = "b9e267ab-50ae-418b-849c-65b6a5e9c4cb"
+    git_commit           = "ee48e3377aa973d5a790c21d9c5f2639968a2d10"
+    git_file             = "aws-microservice/main.tf"
+    git_last_modified_at = "2025-04-10 11:06:26"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
   }
 }
 

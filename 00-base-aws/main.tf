@@ -48,9 +48,9 @@ resource "aws_servicecatalogappregistry_application" "terraform_app" {
 resource "aws_sns_topic" "my_topic" {
   name = "my_topic" # Name of the SNS topic
   tags = {
-    git_commit           = "2f8eeb44f70ed9a130044d72f123164debedf21c"
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
     git_file             = "00-base-aws/main.tf"
-    git_last_modified_at = "2025-05-15 11:33:54"
+    git_last_modified_at = "2025-04-10 10:29:50"
     git_last_modified_by = "estebanpbuday@gmail.com"
     git_modifiers        = "estebanpbuday"
     git_org              = "esteban-pb-551"

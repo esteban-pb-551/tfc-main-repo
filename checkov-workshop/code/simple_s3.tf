@@ -6,9 +6,16 @@ resource "aws_s3_bucket" "dev_s3" {
   bucket_prefix = "dev-"
 
   tags = {
-    Environment = "Dev"
-    yor_name    = "dev_s3"
-    yor_trace   = "1e161f23-fc04-45ae-acec-d941cc2f89c3"
+    Environment          = "Dev"
+    yor_name             = "dev_s3"
+    yor_trace            = "1e161f23-fc04-45ae-acec-d941cc2f89c3"
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/simple_s3.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
   }
 }
 

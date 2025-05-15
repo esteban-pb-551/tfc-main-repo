@@ -5,9 +5,9 @@ resource "aws_subnet" "main" {
 
   tags = {
     Name                 = "Main"
-    git_commit           = "2f8eeb44f70ed9a130044d72f123164debedf21c"
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
     git_file             = "goof-master/modules/subnet/main.tf"
-    git_last_modified_at = "2025-05-15 11:33:54"
+    git_last_modified_at = "2025-04-10 10:29:50"
     git_last_modified_by = "estebanpbuday@gmail.com"
     git_modifiers        = "estebanpbuday"
     git_org              = "esteban-pb-551"
@@ -24,9 +24,9 @@ resource "aws_subnet" "secondary" {
 
   tags = {
     Name                 = "Main"
-    git_commit           = "2f8eeb44f70ed9a130044d72f123164debedf21c"
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
     git_file             = "goof-master/modules/subnet/main.tf"
-    git_last_modified_at = "2025-05-15 11:33:54"
+    git_last_modified_at = "2025-04-10 10:29:50"
     git_last_modified_by = "estebanpbuday@gmail.com"
     git_modifiers        = "estebanpbuday"
     git_org              = "esteban-pb-551"
