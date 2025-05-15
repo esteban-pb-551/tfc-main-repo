@@ -3,10 +3,17 @@ resource "aws_sqs_queue" "dlq" {
   name                      = "my-app-dead-letter-queue" # Unique queue name
   message_retention_seconds = 1209600                    # Retain DLQ messages for 14 days
   tags = {
-    Environment = "dev"
-    Project     = "example-app"
-    yor_name    = "dlq"
-    yor_trace   = "46854072-7d28-4181-80e1-7bd2af7eb2c1"
+    Environment          = "dev"
+    Project              = "example-app"
+    yor_name             = "dlq"
+    yor_trace            = "46854072-7d28-4181-80e1-7bd2af7eb2c1"
+    git_commit           = "1d16213a2ced1f52d2a2cbb95fd9bc434d099011"
+    git_file             = "checkov-workshop/code/build/sqs.tf"
+    git_last_modified_at = "2025-05-15 13:08:13"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
   }
 }
 
@@ -29,10 +36,17 @@ resource "aws_sqs_queue" "main" {
   })
 
   tags = {
-    Environment = "dev" # Cost-allocation tag :contentReference[oaicite:8]{index=8}
-    Project     = "example-app"
-    yor_name    = "main"
-    yor_trace   = "47a78387-9721-44d2-b8e9-3c8cb3c235a2"
+    Environment          = "dev" # Cost-allocation tag :contentReference[oaicite:8]{index=8}
+    Project              = "example-app"
+    yor_name             = "main"
+    yor_trace            = "47a78387-9721-44d2-b8e9-3c8cb3c235a2"
+    git_commit           = "1d16213a2ced1f52d2a2cbb95fd9bc434d099011"
+    git_file             = "checkov-workshop/code/build/sqs.tf"
+    git_last_modified_at = "2025-05-15 13:08:13"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
   }
 }
 
@@ -41,9 +55,16 @@ resource "aws_kms_key" "sqs_key" {
   description             = "KMS key for SQS queue encryption"
   deletion_window_in_days = 10
   tags = {
-    Environment = "dev" # Tagging KMS key :contentReference[oaicite:9]{index=9}
-    Project     = "example-app"
-    yor_name    = "sqs_key"
-    yor_trace   = "7b070884-d901-4fb8-8956-f57232957b79"
+    Environment          = "dev" # Tagging KMS key :contentReference[oaicite:9]{index=9}
+    Project              = "example-app"
+    yor_name             = "sqs_key"
+    yor_trace            = "7b070884-d901-4fb8-8956-f57232957b79"
+    git_commit           = "1d16213a2ced1f52d2a2cbb95fd9bc434d099011"
+    git_file             = "checkov-workshop/code/build/sqs.tf"
+    git_last_modified_at = "2025-05-15 13:08:13"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
   }
 }
