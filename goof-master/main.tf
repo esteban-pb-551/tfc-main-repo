@@ -9,9 +9,9 @@ provider "aws" {
       version         = var.version_app
       service         = var.application_name
       terraform       = "true"
-    }
+    }    
   }
-
+  
   # Make it faster by skipping something
   skip_metadata_api_check     = true
   skip_region_validation      = true
@@ -20,7 +20,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "application"
+  alias = "application"
   region = var.aws_region
 }
 
@@ -30,35 +30,24 @@ resource "aws_servicecatalogappregistry_application" "terraform_app" {
   provider    = aws.application
   name        = var.application_name
   description = "Terraform application for Goof-master project"
-  tags = {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "terraform_app"
-    yor_trace            = "7df7483c-1a44-4a4e-8d47-4336783c1032"
-  }
 }
 
 resource "aws_iam_account_password_policy" "strict" {
-  minimum_password_length = 8
+  minimum_password_length        = 8
   #require_lowercase_characters   = true
   #require_numbers                = true
   #require_uppercase_characters   = true
   #require_symbols                = true
   #allow_users_to_change_password = true
   #password_reuse_prevention      = 24
-  max_password_age = 3
+  max_password_age                = 3
 }
 
 module "vpc" {
   source = "./modules/vpc"
 }
 
-module "subnet" {
+module "subnet"  {
   source = "./modules/subnet"
   vpc_id = module.vpc.vpc_id
   region = var.aws_region
@@ -67,11 +56,11 @@ module "subnet" {
 module "storage" {
   source = "./modules/storage"
 
-  acl            = var.s3_acl
-  db_password    = "supersecret"
-  db_username    = "snyk"
-  environment    = var.env
-  vpc_id         = module.vpc.vpc_id
+  acl = var.s3_acl
+  db_password = "supersecret"
+  db_username = "snyk"
+  environment = var.env
+  vpc_id = module.vpc.vpc_id
   private_subnet = [module.subnet.subnet_id_main, module.subnet.subnet_id_secondary]
 }
 
@@ -82,10 +71,10 @@ module "iam" {
 }
 
 module "instance" {
-  source        = "terraform-aws-modules/ec2-instance/aws"
-  ami           = var.ami
-  instance_type = "t2.micro"
-  name          = "example-server"
+  source                 = "terraform-aws-modules/ec2-instance/aws"
+  ami                    = var.ami
+  instance_type          = "t2.micro"
+  name                   = "example-server"
 
   vpc_security_group_ids = [module.vpc.vpc_sg_id]
   subnet_id              = module.subnet.subnet_id_main
@@ -93,15 +82,6 @@ module "instance" {
   tags = {
     Terraform            = "true"
     Environment          = var.env
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "instance"
-    yor_trace            = "a57da1db-4b8c-4ca4-8871-1ebb16fe7e30"
   }
 }
 
