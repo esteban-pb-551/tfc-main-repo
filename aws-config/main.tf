@@ -3,14 +3,14 @@ provider "aws" {
   region = var.aws_region
   default_tags {
     tags = {
-      env             = var.environment
-      owner           = "Ops"
-      version         = var.version_app
-      service         = var.application_name
-      terraform       = "true"
-    }    
+      env       = var.environment
+      owner     = "Ops"
+      version   = var.version_app
+      service   = var.application_name
+      terraform = "true"
+    }
   }
-  
+
   # Make it faster by skipping something
   skip_metadata_api_check     = true
   skip_region_validation      = true
@@ -42,5 +42,16 @@ resource "aws_config_config_rule" "example" {
       }
 EOF                    
     }
+  }
+  tags = {
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
+    git_file             = "aws-config/main.tf"
+    git_last_modified_at = "2025-04-10 10:29:50"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "example"
+    yor_trace            = "5943db04-ce9d-4f09-a629-859c8f2cd8a2"
   }
 }
