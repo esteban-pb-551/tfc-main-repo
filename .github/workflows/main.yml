@@ -44,6 +44,8 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout repo
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Ensures full git history is available
       - name: Run yor action
         uses: bridgecrewio/yor-action@main
+        with:
+          config_file: ./custom_tags.yaml
