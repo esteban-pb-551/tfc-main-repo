@@ -17,7 +17,18 @@ export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMAAAKEY
 export AWS_DEFAULT_REGION=us-west-2
 echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
 EOF
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_host"
+    yor_trace            = "27d4dd45-4048-46e1-8f0c-04f9a6202bdd"
+  }
 }
 
 resource "aws_ebs_volume" "web_host_storage" {
@@ -25,14 +36,36 @@ resource "aws_ebs_volume" "web_host_storage" {
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
   size = 1
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_host_storage"
+    yor_trace            = "e1c04ce5-afb9-4fae-ac90-e1810eefd025"
+  }
 }
 
 resource "aws_ebs_snapshot" "example_snapshot" {
   # ebs snapshot without encryption
   volume_id   = "${aws_ebs_volume.web_host_storage.id}"
   description = "${local.resource_prefix.value}-ebs-snapshot"
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "example_snapshot"
+    yor_trace            = "3f943d46-88b8-4bc5-a997-720cc4fd622d"
+  }
 }
 
 resource "aws_volume_attachment" "ebs_att" {
@@ -69,14 +102,36 @@ resource "aws_security_group" "web-node" {
     "0.0.0.0/0"]
   }
   depends_on = [aws_vpc.web_vpc]
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web-node"
+    yor_trace            = "4357f364-e0c8-4f79-b3db-1c5a9c8ba500"
+  }
 }
 
 resource "aws_vpc" "web_vpc" {
   cidr_block           = "172.16.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_vpc"
+    yor_trace            = "2543b6d9-f15f-4f4a-b4c0-284f33fb6f81"
+  }
 }
 
 resource "aws_subnet" "web_subnet" {
@@ -85,7 +140,18 @@ resource "aws_subnet" "web_subnet" {
   availability_zone       = "${var.region}a"
   map_public_ip_on_launch = true
 
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_subnet"
+    yor_trace            = "4b89c3f6-bdd0-42c1-94a5-73c4590fcf25"
+  }
 }
 
 resource "aws_subnet" "web_subnet2" {
@@ -94,20 +160,53 @@ resource "aws_subnet" "web_subnet2" {
   availability_zone       = "${var.region}b"
   map_public_ip_on_launch = true
 
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_subnet2"
+    yor_trace            = "c48995f2-1426-4339-8918-44ec45479b3b"
+  }
 }
 
 
 resource "aws_internet_gateway" "web_igw" {
   vpc_id = aws_vpc.web_vpc.id
 
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_igw"
+    yor_trace            = "c23214c3-2664-4cfb-b9cf-05acf15e8fc9"
+  }
 }
 
 resource "aws_route_table" "web_rtb" {
   vpc_id = aws_vpc.web_vpc.id
 
-  
+
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web_rtb"
+    yor_trace            = "c8421276-787e-403a-aa87-607fd7589007"
+  }
 }
 
 resource "aws_route_table_association" "rtbassoc" {
@@ -134,6 +233,17 @@ resource "aws_network_interface" "web-eni" {
   subnet_id   = aws_subnet.web_subnet.id
   private_ips = ["172.16.10.100"]
 
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "web-eni"
+    yor_trace            = "c4a6d386-623b-41e8-a1eb-5a6511816e24"
+  }
 }
 
 # VPC Flow Logs to S3
@@ -144,12 +254,34 @@ resource "aws_flow_log" "vpcflowlogs" {
   vpc_id               = aws_vpc.web_vpc.id
 
 
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "vpcflowlogs"
+    yor_trace            = "dcac566d-e42a-45c2-a8a8-7565579fe025"
+  }
 }
 
 resource "aws_s3_bucket" "flowbucket" {
   bucket        = "${local.resource_prefix.value}-flowlogs"
   force_destroy = true
 
+  tags = {
+    git_commit           = "ab899ca8d43cdbf5844e8d4cc934c6cd8aece3e8"
+    git_file             = "checkov-workshop/code/deployment_ec2.tf"
+    git_last_modified_at = "2025-05-14 19:08:30"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "flowbucket"
+    yor_trace            = "42e4ed86-7382-4858-b5ad-4447c1e6bc69"
+  }
 }
 
 # OUTPUTS
