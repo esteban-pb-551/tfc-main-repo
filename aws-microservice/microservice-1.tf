@@ -26,5 +26,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     "Name"        = "dynamodb-table-1"
     "Environment" = "production"
     "Project"     = "${var.default_tags.project}"
+    yor_name      = "basic-dynamodb-table"
+    yor_trace     = "1bfd0832-0260-4a29-b306-42b002354b3a"
   }
 }

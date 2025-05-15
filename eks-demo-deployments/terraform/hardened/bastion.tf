@@ -19,6 +19,17 @@ resource "aws_iam_role" "ec2_service_assume" {
   count              = var.create_ssm_profile ? 1 : 0
   name_prefix        = "ec2-service-assume"
   assume_role_policy = data.aws_iam_policy_document.ec2_service_assume.json
+  tags = {
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
+    git_file             = "eks-demo-deployments/terraform/hardened/bastion.tf"
+    git_last_modified_at = "2025-04-10 10:29:50"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "ec2_service_assume"
+    yor_trace            = "f045272d-a231-4ff2-9f10-3edc41c38cca"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "ec2_ssm" {
@@ -37,6 +48,17 @@ resource "aws_iam_instance_profile" "ec2_ssm_core" {
   count       = var.create_ssm_profile ? 1 : 0
   name_prefix = "ec2-ssm-core"
   role        = aws_iam_role.ec2_service_assume[0].name
+  tags = {
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
+    git_file             = "eks-demo-deployments/terraform/hardened/bastion.tf"
+    git_last_modified_at = "2025-04-10 10:29:50"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "ec2_ssm_core"
+    yor_trace            = "1609abb4-45fd-44e9-a520-f087055cc8f5"
+  }
 }
 
 data "aws_ami" "amazon_linux_2" {
@@ -58,6 +80,17 @@ resource "aws_instance" "this" {
   subnet_id                   = module.vpc.private_subnets[0]
 
   depends_on = [module.cluster, module.vpc]
+  tags = {
+    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
+    git_file             = "eks-demo-deployments/terraform/hardened/bastion.tf"
+    git_last_modified_at = "2025-04-10 10:29:50"
+    git_last_modified_by = "estebanpbuday@gmail.com"
+    git_modifiers        = "estebanpbuday"
+    git_org              = "esteban-pb-551"
+    git_repo             = "tfc-main-repo"
+    yor_name             = "this"
+    yor_trace            = "754d4a6f-7d19-48f7-8774-14b08627669b"
+  }
 }
 
 output "bastion_host" {
