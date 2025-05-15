@@ -12,7 +12,7 @@ jobs:
       security-events: write # for GitHub/codeql-action/upload-sarif to upload SARIF results
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Run checkov
       id: checkov
