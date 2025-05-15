@@ -4,16 +4,6 @@ resource "aws_db_subnet_group" "snyk_rds_subnet_grp" {
 
   tags = merge(var.default_tags, {
     Name = "snyk_rds_subnet_grp_${var.environment}"
-    }, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_rds_subnet_grp"
-    yor_trace            = "10a8a43e-72e6-46a5-acd5-b4875069a0da"
   })
 }
 
@@ -23,16 +13,6 @@ resource "aws_security_group" "snyk_rds_sg" {
 
   tags = merge(var.default_tags, {
     Name = "snyk_rds_sg_${var.environment}"
-    }, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_rds_sg"
-    yor_trace            = "1ae9f46e-d00e-49f6-8caf-0a6d1f10aa8d"
   })
 
   # HTTP access from anywhere
@@ -59,16 +39,6 @@ resource "aws_kms_key" "snyk_db_kms_key" {
 
   tags = merge(var.default_tags, {
     Name = "snyk_db_kms_key_${var.environment}"
-    }, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_db_kms_key"
-    yor_trace            = "77ed8440-eff9-463e-8a1a-a832d0770348"
   })
 }
 
@@ -89,16 +59,6 @@ resource "aws_db_instance" "snyk_db" {
   kms_key_id                = aws_kms_key.snyk_db_kms_key.arn
   tags = merge(var.default_tags, {
     Name = "snyk_db_${var.environment}"
-    }, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_db"
-    yor_trace            = "4b8f75db-3e3b-499b-a8b9-595b9511c842"
   })
 }
 
@@ -108,17 +68,7 @@ resource "aws_ssm_parameter" "snyk_ssm_db_host" {
   type        = "SecureString"
   value       = aws_db_instance.snyk_db.endpoint
 
-  tags = merge(var.default_tags, {}, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_ssm_db_host"
-    yor_trace            = "d08d9033-d92c-4020-9ce5-bf9c1a58c1d3"
-  })
+  tags = merge(var.default_tags, {})
 }
 
 resource "aws_ssm_parameter" "snyk_ssm_db_password" {
@@ -127,17 +77,7 @@ resource "aws_ssm_parameter" "snyk_ssm_db_password" {
   type        = "SecureString"
   value       = aws_db_instance.snyk_db.password
 
-  tags = merge(var.default_tags, {}, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_ssm_db_password"
-    yor_trace            = "c8906a3a-284a-484e-9048-a0fdb8818032"
-  })
+  tags = merge(var.default_tags, {})
 }
 
 resource "aws_ssm_parameter" "snyk_ssm_db_user" {
@@ -146,17 +86,7 @@ resource "aws_ssm_parameter" "snyk_ssm_db_user" {
   type        = "SecureString"
   value       = aws_db_instance.snyk_db.username
 
-  tags = merge(var.default_tags, {}, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_ssm_db_user"
-    yor_trace            = "9dc64937-e27b-4403-a1ef-c546a8398840"
-  })
+  tags = merge(var.default_tags, {})
 }
 resource "aws_ssm_parameter" "snyk_ssm_db_name" {
   name        = "/snyk-${var.environment}/DB_NAME"
@@ -166,16 +96,6 @@ resource "aws_ssm_parameter" "snyk_ssm_db_name" {
 
   tags = merge(var.default_tags, {
     environment = "${var.environment}"
-    }, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_ssm_db_name"
-    yor_trace            = "dec7bba1-0c76-4d71-9e5d-a7cc485564da"
   })
 }
 
@@ -183,39 +103,18 @@ resource "aws_s3_bucket" "snyk_storage" {
   bucket = "snyk-storage-${var.environment}-demo"
   tags = merge(var.default_tags, {
     name = "snyk_blob_storage_${var.environment}"
-    }, {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "snyk_storage"
-    yor_trace            = "6211b7c9-7e45-43d8-b441-c88e58c4a5f9"
   })
 }
 
 resource "aws_s3_bucket" "my-new-undeployed-bucket" {
   bucket = "snyk-public-${var.environment}-demo"
-  tags = {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "goof-master/modules/storage/main.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "my-new-undeployed-bucket"
-    yor_trace            = "94bd1cb2-5514-4b3f-a654-9e3d2437809d"
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "snyk_public" {
   bucket = aws_s3_bucket.my-new-undeployed-bucket.id
 
   block_public_acls   = false
-  ignore_public_acls  = var.public_ignore_acl
+  ignore_public_acls = var.public_ignore_acl
   block_public_policy = var.public_policy_control
 }
 

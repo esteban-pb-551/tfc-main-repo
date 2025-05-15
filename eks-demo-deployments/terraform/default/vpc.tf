@@ -17,23 +17,12 @@ module "vpc" {
 
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                    = "1"
+    "kubernetes.io/role/elb"                      = "1"
   }
 
   private_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-    "kubernetes.io/role/internal-elb"           = "1"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
 
-  tags = {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "eks-demo-deployments/terraform/default/vpc.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "vpc"
-    yor_trace            = "995213b2-b1ec-4f25-a91e-0706b31614e8"
-  }
 }

@@ -34,15 +34,4 @@ module "cluster" {
       description                   = "Allow access from control plane to webhook port of AWS load balancer controller"
     }
   }
-  tags = {
-    git_commit           = "25eea43527881acd9e9a5a8fb141d5aa4b48417a"
-    git_file             = "eks-demo-deployments/terraform/default/cluster.tf"
-    git_last_modified_at = "2025-04-10 10:29:50"
-    git_last_modified_by = "estebanpbuday@gmail.com"
-    git_modifiers        = "estebanpbuday"
-    git_org              = "esteban-pb-551"
-    git_repo             = "tfc-main-repo"
-    yor_name             = "cluster"
-    yor_trace            = "ae8f83a3-9fd3-4cc1-8555-0fd4e9c54c4e"
-  }
 }
