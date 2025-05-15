@@ -10,12 +10,17 @@ The following table lists the Terraform projects included in this repository alo
 |--------------------------|-------------|
 | 00-base-aws              | Base Terraform Example for AWS Service Catalog AppRegistry |
 | aws-microservices        | Example of AWS Microservices with Terraform |
+| checkov-workshop         | Example of Checkov with Terraform |
 | aws-config               | Simple example of AWS-Config with Terraform |
 | eks-demo-deployments     | EKS complete example  |
 | github-actions           | Example of GitHub Actions with AWS and Rust |
 | goof-master              | Example of Snyk Infrastructure as code. |
 | rust-example             | Rust and Lambda with Terraform |
 | vulnerable-ec2           | Example of vulnerability in EC2 instance
+
+## About Checkov
+
+[Checkov](https://www.checkov.io/) is a static code analysis tool for infrastructure-as-code (IaC) that helps identify security and compliance issues in your Terraform, CloudFormation, Kubernetes, and ARM templates. It scans your IaC files for misconfigurations and provides actionable insights to improve the security posture of your cloud infrastructure.
 
 ## Usage
 
