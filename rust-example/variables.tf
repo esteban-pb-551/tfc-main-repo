@@ -23,11 +23,11 @@ variable "aws_region" {
   default     = "us-west-2"
 }
 
-variable "AWS_SESSION_TOKEN" {
-  description = "AWS session token"
-  type        = string
-  default     = ""
-}
+# variable "AWS_SESSION_TOKEN" {
+#   description = "AWS session token"
+#   type        = string
+#   default     = ""
+# }
 
 variable "AWS_ACCESS_KEY_ID" {
   description = "AWS access key ID"

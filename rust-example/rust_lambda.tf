@@ -6,6 +6,7 @@ module "lambda_function" {
   runtime       = "provided.al2023"
   architectures = ["arm64"]
   handler       = "bootstrap"
+  timeout       = 180
 
   create_package         = false
   local_existing_package = "./target/lambda/rust-example/bootstrap.zip"
