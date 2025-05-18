@@ -10,4 +10,7 @@ module "lambda_function" {
 
   create_package         = false
   local_existing_package = "./target/lambda/rust-example/bootstrap.zip"
+  environment_variables = {
+    GEMINI_API_KEY = var.gemini_api_key
+  }
 }

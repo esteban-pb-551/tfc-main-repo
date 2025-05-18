@@ -53,6 +53,7 @@ secret.auto.tfvars
 
 //Ignore terraform config files
 .terraform/*
+.env
 
 // Ignore the .dccache file for Snyk Code Analysis
 .dccache

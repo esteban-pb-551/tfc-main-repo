@@ -31,3 +31,30 @@ resource "aws_servicecatalogappregistry_application" "terraform_app" {
   name        = var.application_name
   description = "Terraform sample of Rust application"
 }
+
+# Create a bucket with suffix agent- and version enabled
+resource "aws_s3_bucket" "s3_bucket" {
+  bucket = "agent-${random_pet.random_bucket_suffix.id}"
+  
+  tags = {
+    env             = var.environment
+    owner           = "Ops"
+    applicationName = var.application_name
+    awsApplication  = aws_servicecatalogappregistry_application.terraform_app.application_tag.awsApplication
+    version         = var.version_app
+    service         = var.application_name
+    terraform       = "true"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "s3_bucket_versioning" {
+  bucket = aws_s3_bucket.s3_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "random_pet" "random_bucket_suffix" {
+  length    = 2
+  separator = "-"
+}

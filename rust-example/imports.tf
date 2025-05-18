@@ -1,4 +1,4 @@
 import {
   to = aws_servicecatalogappregistry_application.terraform_app
-  id = "059il78fvj70dz2owf9de3rrsa"
+  id = "0a2iqvj932xw9x4jfhjcjaoy70"
 }

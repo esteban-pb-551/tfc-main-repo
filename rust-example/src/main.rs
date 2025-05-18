@@ -1,9 +1,10 @@
-use lambda_http::{run, service_fn, tracing, Error};
+use lambda_runtime::{run, service_fn, tracing, Error};
 pub mod gemini;
-mod http_handler;
-use http_handler::function_handler;
+mod event_handler;
+use event_handler::function_handler;
 use env_logger::Env;
 
+pub const MODEL_DEFAULT: &str = "gemini-2.0-flash-lite";
 pub const DEBUG_PRE: bool = false;
 pub const DEBUG_POST: bool = false;
 
