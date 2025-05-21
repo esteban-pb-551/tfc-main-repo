@@ -1,4 +1,6 @@
 use crate::{gemini::chat::ChatGemini, MODEL_DEFAULT};
+use crate::gemini::libs::ChatResponse;
+use crate::output::output_handler;
 use lambda_runtime::{tracing, Error, LambdaEvent};
 use serde_json::{json, Value};
 use serde::{Serialize, Deserialize};
@@ -23,6 +25,11 @@ pub(crate)async fn function_handler(event: LambdaEvent<Value>) -> Result<LambdaR
         .as_str()
         .unwrap_or(MODEL_DEFAULT);
 
+    let output_format = event
+        .payload["output_format"]
+        .as_str()
+        .unwrap_or("text");
+
     if prompt == "no prompt" {
         return Ok(LambdaResponse {
             status_code: 400,
@@ -36,12 +43,32 @@ pub(crate)async fn function_handler(event: LambdaEvent<Value>) -> Result<LambdaR
     let mut message = String::new();
 
     let llm = ChatGemini::new(model);
+    let response: ChatResponse;
 
-    let response = llm
-        .with_max_tokens(1024)
-        .with_system_prompt("You are a helpful assistant.")
-        .invoke(prompt)
-        .await?;
+    if output_format == "text" {
+        response = llm
+            .with_max_tokens(2048)
+            .with_system_prompt("You are a helpful assistant.")
+            .invoke(prompt)
+            .await?;
+    } else {
+        let json_schema_rec = match output_handler(output_format) {
+            Ok(schema) => schema,
+            Err(e) => {
+                return Ok(LambdaResponse {
+                    status_code: 400,
+                    body: Some(json!({
+                        "message": format!("Error generating schema: {}", e)
+                    }).to_string()),
+                    is_base64_encoded: false,
+                });
+            }
+        };
+        response = llm
+            .with_json_schema(json_schema_rec)
+            .invoke(prompt)
+            .await?;
+    }
    
     if let Some(candidates) = response.candidates {
         for candidate in candidates {

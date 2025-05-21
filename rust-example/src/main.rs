@@ -1,5 +1,6 @@
 use lambda_runtime::{run, service_fn, tracing, Error};
 pub mod gemini;
+pub mod output;
 mod event_handler;
 use event_handler::function_handler;
 use env_logger::Env;
