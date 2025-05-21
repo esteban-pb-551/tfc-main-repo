@@ -15,20 +15,26 @@ pub struct LambdaResponse {
 
 pub(crate)async fn function_handler(event: LambdaEvent<Value>) -> Result<LambdaResponse, Error> {
     // Extract some useful information from the request
-    let prompt = event
-        .payload["prompt"]
-        .as_str()
-        .unwrap_or("no prompt");
-
+    tracing::info!("Event: {:?}", event);
     let model = event
         .payload["model"]
         .as_str()
         .unwrap_or(MODEL_DEFAULT);
 
+    let system_prompt = event
+        .payload["system_prompt"]
+        .as_str()
+        .unwrap_or("You are a helpful assistant.");
+
     let output_format = event
         .payload["output_format"]
         .as_str()
         .unwrap_or("text");
+
+    let prompt = event
+        .payload["prompt"]
+        .as_str()
+        .unwrap_or("no prompt");
 
     if prompt == "no prompt" {
         return Ok(LambdaResponse {
@@ -48,7 +54,7 @@ pub(crate)async fn function_handler(event: LambdaEvent<Value>) -> Result<LambdaR
     if output_format == "text" {
         response = llm
             .with_max_tokens(2048)
-            .with_system_prompt("You are a helpful assistant.")
+            .with_system_prompt(system_prompt)
             .invoke(prompt)
             .await?;
     } else {
@@ -65,6 +71,7 @@ pub(crate)async fn function_handler(event: LambdaEvent<Value>) -> Result<LambdaR
             }
         };
         response = llm
+            .with_system_prompt(system_prompt)
             .with_json_schema(json_schema_rec)
             .invoke(prompt)
             .await?;
